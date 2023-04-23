@@ -10,12 +10,21 @@ int main(){
     cout<<"Select one of the above number : ";
     int op;
     cin>>op;
+    cout<<"1.Encode\n 2.Decode\n Select one of the above: ";
+    int met;
+    cin>>met;
     switch(op){
         case 1:
-            //Enter function call here
+            if(met==1)
+                //Enter function call for encode here
+            else
+                //Enter function call for decode here
             break;
         case 2:
-            
+            if(met==1)
+                //Enter function call for encode here
+            else
+                //Enter function call for decode here
             break;
         default:
             cout<<"Invalid Choice!"<<endl;
