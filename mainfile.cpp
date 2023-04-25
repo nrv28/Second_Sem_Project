@@ -43,12 +43,37 @@ string polybius_decode(string ciphertext) {
     return plaintext;
 }
 
+string vigenere_encrypt(string plaintext, string key) {
+    string ciphertext = "";
+    int key_len = key.length();
+    for (int i = 0; i < plaintext.length(); i++) {
+        char plain_char = plaintext[i];
+        char key_char = key[i % key_len];
+        char cipher_char = 'a' + ((plain_char - 'a' + key_char - 'a') % 26);
+        ciphertext += cipher_char;
+    }
+    return ciphertext;
+}
+
+string vigenere_decrypt(string ciphertext, string key) {
+    string plaintext = "";
+    int key_len = key.length();
+    for (int i = 0; i < ciphertext.length(); i++) {
+        char cipher_char = ciphertext[i];
+        char key_char = key[i % key_len];
+        char plain_char = 'a' + ((cipher_char - 'a' - key_char + 'a' + 26) % 26);
+        plaintext += plain_char;
+    }
+    return plaintext;
+}
+
 
 int main(){
     cout<<"Welcome to Universal Cipher Decoder\n"; //Enter name of program
     int op=0;
     while(op!=-1){
         cout<<"1.Polybius square cipher\n";
+        cout<<"2.Vigenere cipher\n";
         //Add your code here
         cout<<"Select one of the above number(for exiting press -1) : ";
         cin>>op;
@@ -59,22 +84,32 @@ int main(){
         switch(op){
             case 1:
                 if(met==1){
+                    cout<<"Enter Message: ";
                     string input_message,encoded_output;cin>>input_message;
                     encoded_output=polybius_encode(input_message);
                     cout<<encoded_output<<endl;
                 }
                 else{
+                    cout<<"Enter Message: ";
                     string input_message,decoded_output;cin>>input_message;
                     decoded_output=polybius_decode(input_message);
                     cout<<decoded_output<<endl;
                 }
                 break;
-            /*case 2:
-                if(met==2)
-                    //Enter function call for encode here
-                else
-                    //Enter function call for decode here
-                break;*/
+            case 2:
+                if(met==1){
+                    string key;cout<<"Enter Key: ";cin>>key;cout<<"Enter Message: ";
+                    string input_message,encoded_output;cin>>input_message;
+                    encoded_output=vigenere_encrypt(input_message,key);
+                    cout<<encoded_output<<endl;
+                }
+                else{
+                    string key;cout<<"Enter Key: ";cin>>key;cout<<"Enter Message: ";
+                    string input_message,decoded_output;cin>>input_message;
+                    decoded_output=vigenere_decrypt(input_message,key);
+                    cout<<decoded_output<<endl;
+                }
+                break;
             default:
                 cout<<"Invalid Choice!"<<endl;
                 break;
