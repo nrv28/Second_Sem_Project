@@ -1,8 +1,6 @@
-#include <iostream>
-#include <map>
-#include <string>
-#include <vector>
-#include "k.hpp"
+#include <bits/stdc++.h>
+#include "kamran.hpp"
+#include "nirjay.hpp"
 using namespace std;
 
 int main(){
@@ -10,6 +8,7 @@ int main(){
     int op=0;
     cout<<"1.Polybius square cipher\n";
     cout<<"2.Vigenere cipher\n";
+    cout<<"3.enCode String\n";
     //Add your code here
     cout<<"Select one of the above number(for exiting press -1) : ";
     cin>>op;
@@ -45,6 +44,21 @@ int main(){
                 string key;cout<<"Enter Key: ";cin>>key;cout<<"Enter Message: ";
                 string input_message,decoded_output;cin>>input_message;
                 decoded_output=vigenere_decrypt(input_message,key);
+                cout<<decoded_output<<endl;
+                break;
+            }
+        case 3:
+            if(met==1){
+                cout<<"Enter Message: ";
+                string input_message,encoded_output;cin>>input_message;
+                encoded_output=encodeString(input_message);
+                cout<<encoded_output<<endl;
+                break;
+            }
+            else{
+                cout<<"Enter Message: ";
+                string input_message,decoded_output;cin>>input_message;
+                decoded_output=encodeString(input_message);
                 cout<<decoded_output<<endl;
                 break;
             }
